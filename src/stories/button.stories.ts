@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/angular';
+import type { Meta, StoryObj, StoryContext } from '@storybook/angular';
 import { fn } from '@storybook/test';
 import { ButtonComponent } from './button.component';
 
@@ -18,6 +18,15 @@ const meta: Meta<ButtonComponent> = {
 
 export default meta;
 type Story = StoryObj<ButtonComponent>;
+
+export const RenderButton: Story = {
+  render: (args: TransformComponentType<ButtonComponent>, { loaded: { localData } }: StoryContext['loaded']): { props: Partial<ButtonComponent> } => ({
+      props: {
+          ...args,
+      }
+  })
+};
+
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const Primary: Story = {
